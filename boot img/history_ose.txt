@@ -1,0 +1,2287 @@
+docker tag docker.io/openshift/hello-openshift docker-registry-default.cloudapps.pdcloudex.com/test/hello-openshift
+
+docker push docker-registry-default.cloudapps.pdcloudex.com/test/hello-openshift
+
+==================================================================
+
+  295  oc create -f limits1.yml -n candy1
+  296  oc describe limits resource-limits1
+  297  oc autoscale dc cccandy
+  298  oc get dc
+  299  oc autoscale dc cccandy --min 1 --max 3 --cpu-percent=5
+  300  oc get limits
+  301  oc delete limits resource-limits1
+  302  oc autoscale dc cccandy --min 1 --max 3 --cpu-percent=5
+  303  while true; do curl http://cccandy-candy1.cloudapps.pdcloudex.com/; done;
+  304  while true; do curl http://cccandy-candy1.cloudapps.pdcloudex.com/ > /dev/null; echo "one more"; done;
+  305  oc get limits
+  306  oc describe resource-limits
+  307  oc describe limits resource-limits
+  308  oc get dc
+  309  oc whoami
+  310  oc login
+  311  oc gte dc
+  312  oc get dc
+  313  oc autoscale dc cccandy --min 1 --max 3 --cpu-percent=25
+  314  oc get autoscale
+  315  oc edit dc cccandy
+  316  oc descrobe hpa/cccandy
+  317  oc describe hpa/cccandy
+  318  oc get hpa/cccandy
+  319  oc get limits
+  320  oc describe resource-limits
+  321  oc describe limits resource-limits
+  322  oc login -u ayatem:admin
+  323  oc login -u system:admin
+  324  oc get limits
+  325  oc project candy1
+  326  oc get limits
+  327  oc describe limits resource-limits
+  328  oc edit limits resource-limits
+  329  oc get limits "resource-limits"
+  330  oc whoami
+  331  oc get limits
+  332  oc describe limits core-resource-limits
+  333  w
+  334  oc get limits
+  335  oc edit limits resource-limits
+  336  oc get limits
+  337  ls
+  338  vi limits.yml
+  339  oc whoami
+  340  oc get projects
+  341  oc create -f limits.yml -n candy1
+  342  oc project candy1
+  343  oc edit limits resource-limits
+  344  oc get hpa
+  345  oc edit hpa/cccandy
+  346  oc export hpa cccandy -o hpa.yml
+  347  oc export hpa cccandy > hpa.yml
+  348  vi hpa.yml
+  349  vi hpa1.yml
+  350  vi hpa1.yml
+  351  cat hpa.yml
+  352  vi hpa.yml
+  353  oc create -f hpa.yml
+  354  oc get hpa
+  355  oc delete hpa candyapp cccandy monstercandy
+  356  oc create -f hpa.yml
+  357  oc get hpa
+  358  vi hpa.yml
+  359  oc describe hpa cccandy
+  360  oc edit hpa/cccandy
+  361  oc delete hpa cccandy
+  362  oc get hpa
+  363  vi hpa.yml
+  364  oc create -f hpa.yml
+  365  oc get hpa
+  366  oc describe
+  367  oc describe hpa-resource-metrics-memory
+  368  oc describe hpa hpa-resource-metrics-memory
+  369  oc get hpa
+  370  cd /etc/origin/master/
+  371  cp -p master-config.yaml master-config.yaml.20180303
+  372  vi master-config.yaml
+  373  cd
+  374  cd candy/
+  375  ls
+  376  vi hpa.yml
+  377  oc get hpa
+  378  oc get is
+  379  oc whoami
+  380  oc login
+  381  oc get is
+  382  oc new-app --docker-image=docker-registry.default.svc:5000/candy1/candyapp --name=moncan
+  383  oc get dc
+  384  oc new-app --docker-image=docker-registry.default.svc:5000/candy1/candyapp:3.0 --name=moncan
+  385  oc get pod
+  386  oc get limits
+  387  oc describe limits resource-limits
+  388  oc get svc
+  389  oc get routes
+  390  oc expose svc moncan
+  391  oc get routes
+  392  curl -k moncan-candy1.cloudapps.pdcloudex.com
+  393  while true ; do curl -k moncan-candy1.cloudapps.pdcloudex.com; echo " one more"; done
+  394  oc new-project can
+  395  vi hpa.yml
+  396  ls
+  397  vi limits.yml
+  398  oc login -u system:admin
+  399  vi limitsy
+  400  vi limits.yml
+  401  oc create -f limits.yml -n can
+  402  oc whoami
+  403  oc login
+  404  docker images
+  405  docker tag docker-registry.default.svc:5000/candy1/candy docker-registry.default.svc:5000/can/candy
+  406  docker tag docker-registry.default.svc:5000/candy1/candy:3.0 docker-registry.default.svc:5000/can/candy
+  407  docker push docker-registry.default.svc:5000/can/candy
+  408  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --name=candy007
+  409  oc get pod
+  410  oc logs candy007-1-deploy
+  411  oc get pod
+  412  oc rsh candy007-1-deploy
+  413  oc get pod
+  414  oc get limits
+  415  oc describe limits resource-limits
+  416  oc edit limits resource-limits
+  417  oc get limits
+  418  oc get pod
+  419  oc login -u system:admin
+  420  oc project can
+  421  oc edit limits resource-limits
+  422  oc login
+  423  oc get dc
+  424  oc delete all -l app=candy007
+  425  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --name=candy007
+  426  ls
+  427  cat hpa.yml
+  428  oc get dc
+  429  vi hpa.yml
+  430  oc get dc
+  431  oc get pod
+  432  oc delete all -l app=candy007
+  433  docker images
+  434  cd
+  435  oc project
+  436  oc project candy1
+  437  oc get is
+  438  docker tag docker-registry.default.svc:5000/candy1/candyapp docker-registry.default.svc:5000/can/candyapp
+  439  docker pull docker-registry.default.svc:5000/candy1/candyapp
+  440  docker login docker-registry.default.svc
+  441  oc whoami -t
+  442  docker login docker-registry.default.svc
+  443  oc project
+  444  oc get is
+  445  docker images
+  446  oc project can
+  447  docker build -t candy4 .
+  448  cd candy/
+  449  docker build -t candy4 .
+  450  docker images
+  451  docker tag candy4 docker-registry.default.svc:5000/can/candy
+  452  docker push docker-registry.default.svc:5000/can/candy
+  453  oc project can
+  454  oc get limits
+  455  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --name=candy7
+  456  oc get pod
+  457  oc get nodes
+  458  oc login -u system:admin
+  459  oc get nodes
+  460  oadm manage-node node --list-pods
+  461  ssh node
+  462  oc get pod
+  463  oc delete candy7-1-deploy
+  464  oc get pod
+  465  oc delete pod candy7-1-deploy
+  466  oc get pod
+  467  oc get bc
+  468  oc get dc
+  469  oc describe node node
+  470  oc get pod
+  471  su - inder
+  472  oc login -u system:admin
+  473  oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
+  474  oc get is
+  475  oc get is -n openshift
+  476  oc get is -n openshift |grep -i eap70
+  477  docker pull registry.access.redhat.com/jboss-eap-7/eap70-openshift:1.7-3
+  478  su - inder
+  479  more /etc/ansible/hosts
+  480  vim /etc/origin/master/master-config.yaml
+  481  ssh node
+  482  su - inder
+  483  ssh node
+  484  su - inder
+  485  history |grep -i scc
+  486  su - inder
+  487  w
+  488  oc project cicd-inder
+  489  oc get all
+  490  oc logs -f po/gogs-1-bpdgv
+  491  oc logs po/gogs-1-bpdgv
+  492  oc describe pod po/gogs-1-bpdgv
+  493  oc logs po/gogs-1-bpdgv
+  494  oc describe pod po/gogs-1-bpdgv
+  495  oc describe po/gogs-1-bpdgv
+  496  oc get all
+  497  oc describe po/gogs-postgresql-2-tr40q
+  498  oc get pods
+  499  w
+  500  oc get pods
+  501  oc get event
+  502  oc get pods
+  503  oc describe pod gogs-1-bpdgv
+  504  oc get pods
+  505  oc describe pod jenkins-4-fbcsb
+  506  oc get pods
+  507  oc project
+  508  oc get all
+  509  w
+  510  oc get nodes
+  511  oc describe node node
+  512  oc get pods
+  513  oc describe pod gogs-1-bpdgv
+  514  oc get pods
+  515  oc logs gogs-1-bpdgv
+  516  oc get pods
+  517  oc delete pod gogs-1-bpdgv
+  518  oc get pods
+  519  ssh node
+  520  ssh infra
+  521  su - inder
+  522  ssh node
+  523  ssh infra
+  524  su - inder
+  525  ssh infra
+  526  su - inder
+  527  ls
+  528  oc get pods
+  529  su - inder
+  530  s2i
+  531  ip a s
+  532  oc get pods
+  533  oc login
+  534  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com/candy1/candy:3.0  --name=candyapp
+  535  docker login docker-registry.default.svc
+  536  docker login docker-registry-default.cloudapps.pdcloudex.com
+  537  oc whoami -t
+  538  oc whoami
+  539  oc login
+  540  docker images
+  541  oc new-app --docker-image=docker-registry.default.svc:5000/candy1/candy:3.0  --name=candyapp
+  542  oc login
+  543  oc new-project cicd-gitlab
+  544  oc project cicd-gitlab
+  545  oc new-project test-gogs --display-name "Shared Gogs"
+  546  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --param POSTGRESQL_USER=gogs --param POSTGRESQL_PASSWORD=gogs --param VOLUME_CAPACITY=4Gi -lapp=postgresql_gogs
+  547  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  548  echo "apiVersion: v1
+  549  kind: PersistentVolumeClaim
+  550  metadata:
+  551    name: gogs-data
+  552  spec:
+  553    accessModes:
+  554    - ReadWriteOnce
+  555    resources:
+  556      requests:
+  557        storage: 4Gi" | oc create -f -
+  558  oc set volume dc/gogs --add --overwrite --name=gogs-volume-1 --mount-path=/data/ --type persistentVolumeClaim --claim-name=gogs-data
+  559  oc expose svc gogs
+  560  oc get route gogs
+  561  oc projects
+  562  oc get projects
+  563  oc new-project xyz-gogs --display-name "Shared Gogs"
+  564  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --param POSTGRESQL_USER=gogs --param POSTGRESQL_PASSWORD=gogs --param VOLUME_CAPACITY=4Gi -lapp=postgresql_gogs
+  565  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  566  echo "apiVersion: v1
+  567  kind: PersistentVolumeClaim
+  568  metadata:
+  569    name: gogs-data
+  570  spec:
+  571    accessModes:
+  572    - ReadWriteOnce
+  573    resources:
+  574      requests:
+  575        storage: 4Gi" | oc create -f -
+  576  oc set volume dc/gogs --add --overwrite --name=gogs-volume-1 --mount-path=/data/ --type persistentVolumeClaim --claim-name=gogs-data
+  577  oc new-project test-gogs --display-name "Shared Gogs"
+  578  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --param POSTGRESQL_USER=gogs --param POSTGRESQL_PASSWORD=gogs --param VOLUME_CAPACITY=4Gi -lapp=postgresql_gogs
+  579  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  580  oc expose svc gogs
+  581  oc new-project xyz-gogs --display-name "Shared Gogs"
+  582  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --param POSTGRESQL_USER=gogs --param POSTGRESQL_PASSWORD=gogs --param VOLUME_CAPACITY=4Gi -lapp=postgresql_gogs
+  583  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  584  history |grep -i htpasswd
+  585  htpasswd -b /etc/origin/master/passwd devopsuser devopsuser
+  586  oc login -u devopsuser
+  587  exit
+  588  host
+  589  hostname
+  590  hostname -f
+  591  hostname
+  592  cat /etc/hosts
+  593  oc get pods
+  594  oc login -u system:admin
+  595  oc get projects
+  596  oc get pods -o wide --all-namespaces
+  597  oc get pods -o wide --all-namespaces |wc -l
+  598  vim /etc/origin/master/master-config.yaml
+  599  ssh node
+  600  oc get pods -o wide
+  601  oc get pods -o wide --all-namespaces
+  602  oc delete pod gogs-1-zz0v3 gogs-1-l252k
+  603  oc delete pod gogs-1-zz0v3 gogs-1-l252k -n xyz-gogs
+  604  oc get pods -o wide --all-namespaces
+  605  oc describe pod xyz-gogs
+  606  oc describe pod gogs-1-p9wrm -n xyz-gogs
+  607  oc get pods -o wide --all-namespaces
+  608  oc delete pod xyz-gogs
+  609  oc delete pod gogs-1-p9wrm -n xyz-gogs
+  610  oc get pods -o wide --all-namespaces
+  611  ssh node
+  612  oc get pods -o wide
+  613  oc get pods -o wide --all-namespaces
+  614  cd candy/
+  615  ls
+  616  vi Dockerfile
+  617  cd ..
+  618  ls
+  619  oc projects
+  620  oc project2
+  621  oc project project2
+  622  oc project cicd-inder
+  623  ls
+  624  oc get pods
+  625  oc ps
+  626  oc ps -a
+  627  ps -a
+  628  docker ps
+  629  oc get pods
+  630  oc exec -it jenkins-4-lj2g1 bash
+  631  oc get pods
+  632  oc exec -it nexus-1-drqq4  bash
+  633  oc new-project cicd-siddu
+  634  curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/wkulhanek/ocp_advanced_development_resources/master/nexus/setup_nexus3.sh
+  635  chmod +x setup_nexus3.sh
+  636  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template='{{ .spec.host }}')
+  637  ./setup_nexus3.sh admin admin123 http://nexus-cicd-inder.cloudapps.pdcloudex.com
+  638  oc get pods
+  639  oc project cicd-inder
+  640  oc get pods
+  641  oc exec -it jenkins-4-lj2g1 bash
+  642  oc get pods
+  643  oc exec -it nexus-1-drqq4 bash
+  644  ls
+  645  find / -name cicd-settings-nexus3.xml
+  646  oc get pods
+  647  oc exec -it gogs-1-b8c0s bash
+  648  ls
+  649  cd /home/
+  650  ls
+  651  cd
+  652  cd $HOME
+  653  git clone https://github.com/anand-prodevans/candy-mvn.git
+  654  ls
+  655  cd candy-mvn/
+  656  git remote add gogs http://inder:inder@/CICD_Labs/candy-mvn.git
+  657  git push -u gogs master
+  658  git remote add origin http://gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  659  git remote add gogs http://gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  660  git remote add cicd http://gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  661  git push -u cicd master
+  662  ls
+  663  cd ..
+  664  ls
+  665  cd candy-mvn/
+  666  ls
+  667  cd ..
+  668  rm -rf candy-mvn/
+  669  ls
+  670  git clone https://github.com/wkulhanek/openshift-tasks.git
+  671  cd openshift-tasks/
+  672  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  673  git push -u gogs master
+  674  git pull
+  675  ls
+  676  git pull origin master
+  677  ls
+  678  git pull gogs master
+  679  ls
+  680  rm -rf pom.xml
+  681  git rm pom.xml
+  682  ls
+  683  git pull gogs master
+  684  git commit -m "deleted pom.xml"
+  685  cd ..
+  686  cd openshift-tasks/
+  687  cd ..
+  688  rm -rf openshift-tasks/
+  689  git clone https://github.com/wkulhanek/openshift-tasks.git
+  690  cd openshift-tasks
+  691  ls
+  692  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  693  git push -u gogs master
+  694  git pull gogs master
+  695  cd
+  696  ls
+  697  cd openshift-tasks/
+  698  ls
+  699  cd ..
+  700  rm -rf openshift-tasks
+  701  l
+  702  ls
+  703  git clone https://github.com/wkulhanek/openshift-tasks.git
+  704  cd openshift-tasks
+  705  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  706  git push -u gogs master
+  707  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  708  git remote add cicd http://inder:inder@gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_Labs/openshift-tasks.git
+  709  git push -u cicd master
+  710  vim nexus_settings.xml
+  711  vim nexus_openshift_settings.xml
+  712  git commit -m "Updated Settings" nexus_settings.xml nexus_openshift_settings.xml
+  713  git push -u cicd master
+  714  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  715  yum install maven
+  716  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  717  oc new-project cicd-tasks-dev --display-name "Tasks Development"
+  718  oc policy add-role-to-user edit system:serviceaccount:jenkins:jenkins -n cicd-tasks-dev
+  719  oc new-build --binary=true --name="tasks" jboss-eap70-openshift:1.5
+  720  oc new-build --binary=true --name="tasks" jboss-eap70-openshift
+  721  oc new-app cicd-tasks-dev/tasks:TestingCandidate-1.0 --name=tasks --allow-missing-imagestream-tags=true
+  722  oc set triggers dc/tasks --manual
+  723  oc expose dc tasks --port 8080
+  724  oc expose svc tasks
+  725  oc new-project cicd-tasks-prod --display-name "Tasks Production"
+  726  oc policy add-role-to-group system:image-puller system:serviceaccounts:cicd-tasks-prod -n cicd-tasks-dev
+  727  oc policy add-role-to-user edit system:serviceaccount:jenkins:jenkins -n cicd-tasks-prod
+  728*
+  729*
+  730  oc set triggers dc/tasks-green --manual
+  731  oc set triggers dc/tasks-blue --manual
+  732  oc expose dc tasks-blue --port 8080
+  733  oc expose dc tasks-green --port 8080
+  734  oc expose svc/tasks-green --name tasks
+  735  ls
+  736  vim nexus_openshift_settings.xml
+  737  vim nexus_settings.xml
+  738  cd ..
+  739  oc project
+  740  cd ~
+  741  ls
+  742  oc new-project cicd-nexus --display-name "Shared Nexus"
+  743  oc new-app sonatype/nexus3:latest
+  744  oc expose svc nexus3
+  745  oc rollout pause dc nexus3
+  746  oc patch dc nexus3 --patch='{ "spec": { "strategy": { "type": "Recreate" }}}'
+  747  oc set resources dc nexus3 --limits=memory=2Gi --requests=memory=1Gi
+  748  oc rollout resume dc nexus3
+  749  curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/wkulhanek/ocp_advanced_development_resources/master/nexus/setup_nexus3.sh
+  750  chmod +x setup_nexus3.sh
+  751  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template='{{ .spec.host }}')
+  752  oc projects
+  753  vim nexus_settings.xml
+  754  oc get projects
+  755  oc project cicd-nexus
+  756  ls
+  757  cd openshift-tasks/
+  758  ls
+  759  vim nexus_settings.xml
+  760  vim nexus_openshift_settings.xml
+  761  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  762  git commit -m "Updated Settingss" nexus_settings.xml nexus_openshift_settings.xml
+  763  git push cicd  master
+  764  cd $HOME/openshift-tasks
+  765  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  766  vim nexus_settings.xml
+  767  git commit -m "Updated Settingsss" nexus_settings.xml nexus_openshift_settings.xml
+  768  git push cicd  master
+  769  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  770  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template='{{ .spec.host }}')
+  771  ls
+  772  cd ..
+  773  ls
+  774  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template='{{ .spec.host }}')
+  775  ls
+  776  cd openshift-tasks/
+  777  ls
+  778  vim nexus_openshift_settings.xml
+  779  cat ~/.ssh/id_rsa.pub
+  780  ls
+  781  cd candy/
+  782  ls
+  783  rm -rf candy
+  784  git clone http://35.200.149.204/openshift-demo/candy.git
+  785  git clone http://ujwal@prodevans.com:acharya7624@35.200.149.204/openshift-demo/candy.git
+  786  git clone http://ujwal:acharya7624@35.200.149.204/openshift-demo/candy.git
+  787  ls
+  788  rm -rf candy
+  789  ls
+  790  mkdir candy
+  791  oc project
+  792  whoami
+  793  oc delete limits resource-limits
+  794  oc login
+  795  oc delete limits resource-limits
+  796  oc project candy
+  797  cd ..
+  798  pwd
+  799  oc project can
+  800  ls
+  801  pwd
+  802  cd ..
+  803  ls
+  804  cd ~
+  805  ls
+  806  cd candy/
+  807  ls
+  808  cp -r candy candy1
+  809  ls
+  810  ll
+  811  ls
+  812  pwd
+  813  ls
+  814  cd candy/
+  815  ls
+  816  cd candy/
+  817  ll
+  818  cd ..
+  819  chmod 775 candy/
+  820  chown -R root.devopsuser candy
+  821  ll
+  822  cd candy/
+  823  ll
+  824  cd ..
+  825  chmod -R 775 candy/
+  826  cd candy/
+  827  ls
+  828  cd candy
+  829  ls
+  830  ll
+  831  cd ..
+  832  cd candy1
+  833  ls
+  834  oc login
+  835  oc get limits
+  836  oc describe limits resource-limits
+  837  oc login -u system:admin
+  838  oc get limits
+  839  ls
+  840  cat limit.yaml
+  841  cat suman.yaml
+  842  cp limit.yaml limit1.yaml
+  843  cd candy/
+  844  ls
+  845  cat limits.yml
+  846  oc get limits
+  847  oc describe limits resource-limits
+  848  cat limits1.yml
+  849  ls
+  850  grep cpu *
+  851  ls
+  852  cat limits1.yml
+  853  cat limits.yml
+  854  cp limits.yml limits2.yml
+  855  vi limits2.yml
+  856  oc get limits
+  857  oc delete limits resource-limits
+  858  oc create -f limits2.yml -n can
+  859  oc login
+  860  oc get all
+  861  oc delete all -l app=candy7
+  862  oc get po
+  863  history | grep -i cand
+  864  oc get is
+  865  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --name=candy9
+  866  oc get po
+  867  ls
+  868  cat hpa1.yml
+  869  cat hpa.yml
+  870  vi hpa.yml
+  871  oc get pod
+  872  oc create -f hpa.yml
+  873  oc get hpa
+  874  oc get pod
+  875  vi hpa.yml
+  876  oc get dc
+  877  vi hpa.yml
+  878  oc create -f hpa.yml
+  879  oc get hpa
+  880  oc delete hpa candy9
+  881  oc create -f hpa.yml
+  882  oc get hpa
+  883  oc get po
+  884  oc describe pod candy9-1-deploy
+  885  oc logs candy9-1-deploy
+  886  oc get pod
+  887  oc get limits
+  888  oc describe limits resource-limits
+  889  pwd
+  890  ls
+  891  ls -ltr
+  892  cat limits2.yml
+  893  oc get project
+  894  oc project
+  895  ls -ltr
+  896  cat hpa.yml
+  897  oc get pod
+  898   oc delete limits resource-limits
+  899  oc login system:admin
+  900  oc delete limits resource-limits
+  901  whoami
+  902  oc login
+  903  oc delete limits resource-limits
+  904  oc login system:admin
+  905  whoami
+  906  vim limits2.yml
+  907  oc create -f limits2.yml -n can
+  908  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --name=candy10
+  909  vi limits2.yml
+  910  vi hpa.yml
+  911  chown -R root.devopsuser /
+  912  ll
+  913  ll /root/
+  914  su - inder
+  915  ssh node
+  916  oc project cicd-inder
+  917  ls
+  918  su - inder
+  919  vim /etc/origin/master/master-config.yaml
+  920  ssh node
+  921  su - inder
+  922  ls -ld
+  923  chown root.devopsuser /root
+  924  chmod 775 /root
+  925  oc login
+  926  oc new-project siddu-nexus --display-name "Nexus"
+  927  oc new-app sonatype/nexus3:latest
+  928  oc expose svc nexus3
+  929  oc rollout pause dc nexus3
+  930  oc patch dc nexus3 --patch='{ "spec": { "strategy": { "type": "Recreate" }}}'
+  931  oc set resources dc nexus3 --limits=memory=2Gi --requests=memory=1Gi
+  932  oc set probe dc/nexus3 --liveness --failure-threshold 3 --initial-delay-seconds 60 -- echo ok
+  933  oc rollout resume dc nexus3
+  934  curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/wkulhanek/ocp_advanced_development_resources/master/nexus/setup_nexus3.sh
+  935  chmod +x setup_nexus3.sh
+  936  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template='{{ .spec.host }}')
+  937  oc new-project siddu-sonarqube --display-name "Sonarqube"
+  938  oc new-app postgresql-persistent --param POSTGRESQL_USER=sonar --param POSTGRESQL_PASSWORD=sonar --param POSTGRESQL_DATABASE=sonar --param VOLUME_CAPACITY=4Gi -lapp=sonarqube_db
+  939*
+  940  cd $HOME
+  941  git clone https://github.com/wkulhanek/openshift-tasks.git
+  942  mkdir test
+  943  cd test
+  944  git clone https://github.com/wkulhanek/openshift-tasks.git
+  945  cd $HOME/openshift-tasks
+  946  git remote add gogs http://test:123456@gogs-cicd-inder.cloudapps.pdcloudex.com/CICDLabs/openshift-tasks.git
+  947  git remote add cicd  http://test:123456@gogs-cicd-inder.cloudapps.pdcloudex.com/CICDLabs/openshift-tasks.git
+  948  git remote add siddu  http://test:123456@gogs-cicd-inder.cloudapps.pdcloudex.com/CICDLabs/openshift-tasks.git
+  949  git push -u siddu master
+  950  ls
+  951  vim nexus_settings.xml
+  952  ls
+  953  vim nexus_openshift_settings.xml
+  954  git commit -m "Updated Settings" nexus_settings.xml nexus_openshift_settings.xml
+  955*
+  956  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  957  mvn test -s ./nexus_settings.xml
+  958  oc siddu-project xyz-jenkins --display-name "Jenkins"
+  959  oc new-project siddu-jenkins --display-name "Jenkins"
+  960  oc new-app jenkins-persistent --param ENABLE_OAUTH=true --param MEMORY_LIMIT=2Gi --param VOLUME_CAPACITY=4Gi
+  961  cd candy/
+  962  oc projects
+  963  oc new-project siddu-tasks-dev --display-name "Tasks Development"
+  964  pwd
+  965  docker rmi candyimg
+  966  docker images
+  967  docker rmi candyimg
+  968  docker build -t candyimg .
+  969  whoiam
+  970  whoami
+  971  oc projects
+  972  oc new-app --docker-image=candyimg
+  973  oc get pods
+  974  docker images
+  975*
+  976  oc get pod
+  977  oc project candy1
+  978  oc new-app --docker-image=candyimg
+  979  oc get pods
+  980  docker images
+  981  oc new-app --docker-image=candyimg
+  982  oc new-app --docker-image=candyiimg
+  983  oc get pods
+  984  oc project
+  985  oc new-app --docker-image=candyimg --name=candyiimg
+  986  oc get pods
+  987  oc project2
+  988  oc project project2
+  989  oc get pods
+  990  cd candy/
+  991  ll
+  992  docker images
+  993  oc get pods
+  994  history
+  995  oc project
+  996  oc get pods
+  997  oc expose
+  998  oc project project2
+  999  oc get dc
+ 1000  oc get projects
+ 1001  oc project octest
+ 1002  oc get dc
+ 1003  oc edit candy-mvn
+ 1004  oc edit dc candy-mvn
+ 1005  oc get is
+ 1006  oc get dc
+ 1007  cd get bc
+ 1008  oc get bc
+ 1009  oc describe candy-mvn
+ 1010  oc edit bc candy-mvn
+ 1011  history
+ 1012  docker login -p mrs-Lqw2ap8bMAHqFrJPOUaBVeRagVxb7fEQKGqyKDI -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com
+ 1013  history | grep docker
+ 1014  docker login docker-registry-default.cloudapps.pdcloudex.com
+ 1015*
+ 1016  oc whoami -t
+ 1017  docker login docker-registry-default.cloudapps.pdcloudex.com
+ 1018  docker login docker-registry-default.cloudapps.pdcloudex.com
+ 1019  docker login --user=anand --password=gD28xezzizHrzObWi7E0Am2tHyq6OMBegpP5fBDgC1s  docker-registry-default.cloudapps.pdcloudex.com
+ 1020  docker login --help
+ 1021  docker login -u=anand -p=gD28xezzizHrzObWi7E0Am2tHyq6OMBegpP5fBDgC1s  docker-registry-default.cloudapps.pdcloudex.com
+ 1022   docker images
+ 1023   docker tag candy3 docker-registry.default.svc:5000/octest/candyimg
+ 1024   docker push docker-registry.default.svc:5000//octest/candyimg
+ 1025   docker push docker-registry.default.svc:5000/octest/candyimg
+ 1026  docker login -u=anand -p=gD28xezzizHrzObWi7E0Am2tHyq6OMBegpP5fBDgC1s  docker-registry-default.cloudapps.pdcloudex.com
+ 1027   docker tag candy3 docker-registry.default.svc:5000/octest/candyimg
+ 1028   docker push docker-registry.default.svc:5000/octest/candyimg
+ 1029  whoami
+ 1030*
+ 1031  whoami
+ 1032  docker login docker-registry-default.cloudapps.pdcloudex.com
+ 1033  whoami
+ 1034  oc whoami
+ 1035  oc whoami -t
+ 1036   docker tag candy3 docker-registry.default.svc:5000/octest/candy
+ 1037*
+ 1038*
+ 1039  oc whoami
+ 1040  docker login -p mrs-Lqw2ap8bMAHqFrJPOUaBVeRagVxb7fEQKGqyKDI -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com
+ 1041  docker login docker-registry-default.cloudapps.pdcloudex.com
+ 1042  oc login
+ 1043  oc whoami -t
+ 1044  docker login -u=inder -p=wWR0nn-rp88Dwym0W724K4skjxKR0nDYJjm8UJyE7Bc  docker-registry-default.cloudapps.pdcloudex.com
+ 1045   docker tag candyimg docker-registry.default.svc:5000/octest/candy
+ 1046   docker push docker-registry.default.svc:5000/octest/candy
+ 1047  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com
+ 1048   docker push docker-registry.default.svc:5000/octest/candy
+ 1049  oc login --token yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk console.pdcloudex.com:8443
+ 1050   docker push docker-registry.default.svc:5000/octest/candy
+ 1051  clear
+ 1052  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com
+ 1053  docker tag candyimg docker-registry-default.cloudapps.pdcloudex.com/octest/candy:latest
+ 1054  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+ 1055  oc get pods -o wide
+ 1056  oc delete pod candyimg-1-deploy
+ 1057  oc get pods
+ 1058  oc get al
+ 1059  oc get all
+ 1060  oc get pods -o wide
+ 1061  oc get all
+ 1062  oc project
+ 1063  oc get all
+ 1064  oc project
+ 1065  oc delete project octest
+ 1066  oc get all
+ 1067  oc get project
+ 1068  oc new-project octest
+ 1069*
+ 1070  oc get is --all-namespaces
+ 1071  oc get is --all-namespaces  |grep -i img
+ 1072  oc get is --all-namespaces  |grep -i candy
+ 1073  su - inder
+ 1074  oc get all
+ 1075  oc new-app --docker-image=docker-registry.default.svc:5000/octest/candyimg
+ 1076  oc get all
+ 1077  oc describe po/candyimg-1-deploy
+ 1078  oc get pods
+ 1079  oc describe pod candyimg-1-9xhq9
+ 1080  oc logs candyimg-1-9xhq9
+ 1081  ssh node
+ 1082  oc get all
+ 1083  oc logs po/candyimg-1-9xhq9
+ 1084  oc edit dc/candyimg
+ 1085  oc get pods -o wide
+ 1086  oc delete pod candyimg-1-9xhq9
+ 1087  oc get all
+ 1088  oc delete po/candyimg-2-c3njp
+ 1089  oc get all
+ 1090  oc logs po/candyimg-2-xjznr
+ 1091  ls
+ 1092*
+ 1093*
+ 1094  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com
+ 1095  docker tag candy_updated docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+ 1096  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+ 1097  docker tag candy_updated docker-registry-default.cloudapps.pdcloudex.com/octest/candy_updated
+ 1098  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candy_updated
+ 1099  oc new-app --docker-image=docker-registry.default.svc:5000/octest/candy_updated
+ 1100  oc get pods
+ 1101  oc get pods -o wide
+ 1102  oc logs candyupdated-1-89gl8
+ 1103*
+ 1104  cd candy
+ 1105  ls
+ 1106  clear
+ 1107  docker images
+ 1108  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com:5000/candy/candy1
+ 1109  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com:5000/candy/candy2
+ 1110  clear
+ 1111  docker images
+ 1112  oc new-app --docker-image=docker-registry.default.svc:5000/candy1/candy
+ 1113  clear
+ 1114  docker build -t app .
+ 1115  cd ..
+ 1116  docker build -t app .
+ 1117  oc new-app --docker-image=b9a49c450a28
+ 1118  oc new-app --docker-image=b9a49c450a28 app
+ 1119  oc new-app --docker-image=app
+ 1120  oc status
+ 1121*
+ 1122  oc get pods -o wide
+ 1123  oc describe pod app-1-k01xh
+ 1124  docker images
+ 1125  docker tag app docker-registry-default.cloudapps.pdcloudex.com/octest/app
+ 1126  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/app
+ 1127  docker images
+ 1128  oc new-app --docker-image= docker-registry-default.cloudapps.pdcloudex.com/octest/app
+ 1129  oc get all
+ 1130  oc delete is/app is/candy is/candy_updated is/candyupdated is/candyupdated is/candyimg
+ 1131  oc delete rc/app-1 rc/candyimg-1 rc/candyimg-2 rc/candyupdated-1 dc/app dc/candyupdated dc/candyimg
+ 1132  oc get all
+ 1133  oc delete svc/app svc/candyimg svc/candyupdated
+ 1134  oc get all
+ 1135  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com/octest/app
+ 1136  oc get all
+ 1137  oc describe po/app-1-dwcz5
+ 1138  ssh node
+ 1139  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1140  docker images |grep -i app
+ 1141  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1142  oc whoami -t
+ 1143  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com
+ 1144  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1145  docker tag docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1146  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1147  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1148  ssh node
+ 1149  oc get pods
+ 1150  oc delete pod  app-1-dwcz5
+ 1151  oc get pods
+ 1152  oc delete pod app-1-5bk4h
+ 1153  oc get all
+ 1154  oc edit dc/app
+ 1155  oc edit is/app
+ 1156  oc get all
+ 1157  oc delete is/app
+ 1158  oc get all
+ 1159  oc delete  po/app-1-nj1r1
+ 1160  oc get all
+ 1161  oc describe po/app-1-jr28g
+ 1162  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1163  docker tag docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1164  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1165  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:latest
+ 1166  oc get all
+ 1167  oc delete po/app-1-jr28g
+ 1168  oc get all
+ 1169  oc po/app-1-mh06z
+ 1170  oc get all
+ 1171  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u unused docker-registry.default.svc:5000
+ 1172  docker pull  docker-registry.default.svc:5000/octest/app
+ 1173  ssh node
+ 1174  oc get pods
+ 1175  oc get dc
+ 1176  oc deploy dc/app --retry=1
+ 1177  oc get pods -o wide
+ 1178  oc describe pod app-1-rh55z
+ 1179  oc get is
+ 1180  oc get all
+ 1181  oc edit dc app
+ 1182  oc get all
+ 1183  oc delete po/app-1-rh55z
+ 1184  oc get all
+ 1185  oc describe po/app-2-2k2br
+ 1186  oc get pods
+ 1187  oc logs app-2-2k2br
+ 1188  su - inder
+ 1189  oc project
+ 1190  oc whoami
+ 1191  oadm policy add-scc-to-user anyuid -z default
+ 1192  oc get pods
+ 1193  oc delete pod  app-2-2k2br
+ 1194*
+ 1195  oc delete pod  app-2-2k2br
+ 1196  oc get pods
+ 1197  history
+ 1198  oc project
+ 1199  oc get all
+ 1200  oc delete is/app dc/app rc/app-1 rc/app-2 svc/app po/app-2-st05t
+ 1201  docker images
+ 1202  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candyimg
+ 1203  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candyimgdocker-registry-default.cloudapps.pdcloudex.com/octest/candy_updated
+ 1204  docker images
+ 1205  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/app
+ 1206  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+ 1207  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candy_updated
+ 1208  docker rmi docker-registry.default.svc:5000/octest/app
+ 1209  docker images
+ 1210  docker -h
+ 1211  docker images
+ 1212  docker rmi f882dbee3716 6018a81d4853 6b421fe33e03 8ea17dbbf894 cf1fdc9bb43b d7d9b4feafd3
+ 1213  docker images
+ 1214  docker rmi 65a2b67a9406
+ 1215  docker images
+ 1216  docker rmi fe1b8858d6f6 985a53804e60
+ 1217  docker images
+ 1218  oc project
+ 1219  docker images
+ 1220  oc get pods -o wide
+ 1221  oc describe candymonster-1-j83t6
+ 1222  oc describe pod candymonster-1-j83t6
+ 1223  oc get all
+ 1224  oc edit dc/candymonster
+ 1225  oc get pods
+ 1226  oc delete pod candymonster-1-j83t6
+ 1227  oc get all
+ 1228  docker images
+ 1229  oc delete pod is/candymonster dc/candymonster rc/candymonster-1 rc/candymonster-2 svc/candymonster po/candymonster-2-87tc8
+ 1230  oc delete pod is/candymonster dc/candymonster rc/candymonster-1 rc/candymonster-2 svc/candymonster
+ 1231  oc get all
+ 1232  oc delete is/candymonster dc/candymonster rc/candymonster-1 rc/candymonster-2 svc/candymonster po/candymonster-2-87tc8
+ 1233  oc get all
+ 1234  docker images
+ 1235  docker pull docker-registr.default.svc:5000/octest/candymonster
+ 1236  docker pull docker-registry.default.svc:5000/octest/candymonster
+ 1237  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/candymonster
+ 1238  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u unused docker-registry.default.svc:5000
+ 1239  docker images
+ 1240  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u unused docker-registry-default.cloudapps.pdcloudex.com/octest/candymonster
+ 1241  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candymonster
+ 1242  docker images
+ 1243  docker rmi rm docker-registr.default.svc:5000/octest/candymonster
+ 1244  docker rmi docker-registr.default.svc:5000/octest/candymonster
+ 1245  docker images
+ 1246  oc get all
+ 1247  oc get pods -o wide
+ 1248  oc get all
+ 1249  oc expose svc/candymonster --hostname=mosterapp.cloudapps.pdcloudex.com
+ 1250  oc get all
+ 1251  more /etc/ansible/hosts
+ 1252  oc login -u inder -p inder
+ 1253  oc get project
+ 1254  oc project demoredhatpre
+ 1255  oc get all
+ 1256  oc describe po/candymonster-1-0wwks
+ 1257  oc get all
+ 1258  oc edit dc/candymonster
+ 1259  ssh node
+ 1260  oc get pods -o wide
+ 1261  oc get all
+ 1262  oc project
+ 1263  oc edit dc/candymonster
+ 1264  oc project
+ 1265  oc delete project demoredhatpre
+ 1266  oc project
+ 1267  oc get projects
+ 1268  oc get project
+ 1269  oc project demoredhatpre
+ 1270  oc get all
+ 1271  oc expose svc/candymonster
+ 1272  oc get all
+ 1273  oc edit dc/candymonster
+ 1274  oc get all
+ 1275  oc build
+ 1276  oc start-build
+ 1277  oc project project2
+ 1278  oc get all
+ 1279  oc new-build bc/mvn-updated
+ 1280  oc get bc
+ 1281  oc build
+ 1282  oc start-build bc/mvn-updated
+ 1283  oc get all
+ 1284  oc get is -n openshift  |grep -i httpd
+ 1285  oc new-project inderdemo
+ 1286  oc new-app --name=inderapp -i httpd:2.4 https://github.com/anand-prodevans/candy-mvn.git
+ 1287  oc get all
+ 1288  oc logs -f bc/inderapp
+ 1289  oc get all
+ 1290  oc expose
+ 1291  oc expose svc/inderapp
+ 1292  oc expose
+ 1293  oc get all
+
+
+===================================================
+           limits.yml
+===================================================
+apiVersion: "v1"
+kind: "LimitRange"
+metadata:
+  name: "core-resource-limits"
+spec:
+  limits:
+    - type: "Pod"
+      max:
+        cpu: "2"
+        memory: "1Gi"
+      min:
+        cpu: "100m"
+        memory: "6Mi"
+    - type: "Container"
+      max:
+        cpu: "2"
+        memory: "1Gi"
+      min:
+        cpu: "100m"
+        memory: "4Mi"
+      default:
+        cpu: "100m"
+        memory: "100Mi"
+      defaultRequest:
+        cpu: "100m"
+        memory: "100Mi"
+      maxLimitRequestRatio:
+        cpu: "10"
+
+=====================================================================================
+                    UPDATED LOGS
+=====================================================================================
+    1  oc get bc
+    2  oc get dc
+    3  oc describe node node
+    4  oc get pod
+    5  su - inder
+    6  oc login -u system:admin
+    7  oc create -f https://raw.githubusercontent.com/jboss-openshift/applicatio
+    8  oc get is
+    9  oc get is -n openshift
+   10  oc get is -n openshift |grep -i eap70
+   11  docker pull registry.access.redhat.com/jboss-eap-7/eap70-openshift:1.7-3
+   12  su - inder
+   13  more /etc/ansible/hosts
+   14  vim /etc/origin/master/master-config.yaml
+   15  ssh node
+   16  su - inder
+   17  ssh node
+   18  su - inder
+   19  history |grep -i scc
+   20  su - inder
+   21  w
+   22  oc project cicd-inder
+   23  oc get all
+   24  oc logs -f po/gogs-1-bpdgv
+   25  oc logs po/gogs-1-bpdgv
+   26  oc describe pod po/gogs-1-bpdgv
+   27  oc logs po/gogs-1-bpdgv
+   28  oc describe pod po/gogs-1-bpdgv
+   29  oc describe po/gogs-1-bpdgv
+   30  oc get all
+   31  oc describe po/gogs-postgresql-2-tr40q
+   32  oc get pods
+   33  w
+   34  oc get pods
+   35  oc get event
+   36  oc get pods
+   37  oc describe pod gogs-1-bpdgv
+   38  oc get pods
+   39  oc describe pod jenkins-4-fbcsb
+   40  oc get pods
+   41  oc project
+   42  oc get all
+   43  w
+   44  oc get nodes
+   45  oc describe node node
+   46  oc get pods
+   47  oc describe pod gogs-1-bpdgv
+   48  oc get pods
+   49  oc logs gogs-1-bpdgv
+   50  oc get pods
+   51  oc delete pod gogs-1-bpdgv
+   52  oc get pods
+   53  ssh node
+   54  ssh infra
+   55  su - inder
+   56  ssh node
+   57  ssh infra
+   58  su - inder
+   59  ssh infra
+   60  su - inder
+   61  ls
+   62  oc get pods
+   63  su - inder
+   64  s2i
+   65  ip a s
+   66  oc get pods
+   67  oc login
+   68  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com
+   69  docker login docker-registry.default.svc
+   70  docker login docker-registry-default.cloudapps.pdcloudex.com
+   71  oc whoami -t
+   72  oc whoami
+   73  oc login
+   74  docker images
+   75  oc new-app --docker-image=docker-registry.default.svc:5000/candy1/candy:3
+   76  oc login
+   77  oc new-project cicd-gitlab
+   78  oc project cicd-gitlab
+   79  oc new-project test-gogs --display-name "Shared Gogs"
+   80  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --paramY=4Gi -lapp=postgresql_gogs
+   81  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+   82  echo "apiVersion: v1
+   83  kind: PersistentVolumeClaim
+   84  metadata:
+   85    name: gogs-data
+   86  spec:
+   87    accessModes:
+   88    - ReadWriteOnce
+   89    resources:
+   90      requests:
+   91        storage: 4Gi" | oc create -f -
+   92  oc set volume dc/gogs --add --overwrite --name=gogs-volume-1 --mount-path
+   93  oc expose svc gogs
+   94  oc get route gogs
+   95  oc projects
+   96  oc get projects
+   97  oc new-project xyz-gogs --display-name "Shared Gogs"
+   98  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --paramY=4Gi -lapp=postgresql_gogs
+   99  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  100  echo "apiVersion: v1
+  101  kind: PersistentVolumeClaim
+  102  metadata:
+  103    name: gogs-data
+  104  spec:
+  105    accessModes:
+  106    - ReadWriteOnce
+  107    resources:
+  108      requests:
+  109        storage: 4Gi" | oc create -f -
+  110  oc set volume dc/gogs --add --overwrite --name=gogs-volume-1 --mount-path
+  111  oc new-project test-gogs --display-name "Shared Gogs"
+  112  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --paramY=4Gi -lapp=postgresql_gogs
+  113  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  114  oc expose svc gogs
+  115  oc new-project xyz-gogs --display-name "Shared Gogs"
+  116  oc new-app postgresql-persistent --param POSTGRESQL_DATABASE=gogs --paramY=4Gi -lapp=postgresql_gogs
+  117  oc new-app wkulhanek/gogs:11.4 -lapp=gogs
+  118  history |grep -i htpasswd
+  119  htpasswd -b /etc/origin/master/passwd devopsuser devopsuser
+  120  oc login -u devopsuser
+  121  exit
+  122  host
+  123  hostname
+  124  hostname -f
+  125  hostname
+  126  cat /etc/hosts
+  127  oc get pods
+  128  oc login -u system:admin
+  129  oc get projects
+  130  oc get pods -o wide --all-namespaces
+  131  oc get pods -o wide --all-namespaces |wc -l
+  132  vim /etc/origin/master/master-config.yaml
+  133  ssh node
+  134  oc get pods -o wide
+  135  oc get pods -o wide --all-namespaces
+  136  oc delete pod gogs-1-zz0v3 gogs-1-l252k
+  137  oc delete pod gogs-1-zz0v3 gogs-1-l252k -n xyz-gogs
+  138  oc get pods -o wide --all-namespaces
+  139  oc describe pod xyz-gogs
+  140  oc describe pod gogs-1-p9wrm -n xyz-gogs
+  141  oc get pods -o wide --all-namespaces
+  142  oc delete pod xyz-gogs
+  143  oc delete pod gogs-1-p9wrm -n xyz-gogs
+  144  oc get pods -o wide --all-namespaces
+  145  ssh node
+  146  oc get pods -o wide
+  147  oc get pods -o wide --all-namespaces
+  148  cd candy/
+  149  ls
+  150  vi Dockerfile
+  151  cd ..
+  152  ls
+  153  oc projects
+  154  oc project2
+  155  oc project project2
+  156  oc project cicd-inder
+  157  ls
+  158  oc get pods
+  159  oc ps
+  160  oc ps -a
+  161  ps -a
+  162  docker ps
+  163  oc get pods
+  164  oc exec -it jenkins-4-lj2g1 bash
+  165  oc get pods
+  166  oc exec -it nexus-1-drqq4  bash
+  167  oc new-project cicd-siddu
+  168  curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/wkulhanek/oc
+  169  chmod +x setup_nexus3.sh
+  170  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template=
+  171  ./setup_nexus3.sh admin admin123 http://nexus-cicd-inder.cloudapps.pdclou
+  172  oc get pods
+  173  oc project cicd-inder
+  174  oc get pods
+  175  oc exec -it jenkins-4-lj2g1 bash
+  176  oc get pods
+  177  oc exec -it nexus-1-drqq4 bash
+  178  ls
+  179  find / -name cicd-settings-nexus3.xml
+  180  oc get pods
+  181  oc exec -it gogs-1-b8c0s bash
+  182  ls
+  183  cd /home/
+  184  ls
+  185  cd
+  186  cd $HOME
+  187  git clone https://github.com/anand-prodevans/candy-mvn.git
+  188  ls
+  189  cd candy-mvn/
+  190  git remote add gogs http://inder:inder@/CICD_Labs/candy-mvn.git
+  191  git push -u gogs master
+  192  git remote add origin http://gogs-cicd-inder.cloudapps.pdcloudex.com/CICD
+  193  git remote add gogs http://gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_L
+  194  git remote add cicd http://gogs-cicd-inder.cloudapps.pdcloudex.com/CICD_L
+  195  git push -u cicd master
+  196  ls
+  197  cd ..
+  198  ls
+  199  cd candy-mvn/
+  200  ls
+  201  cd ..
+  202  rm -rf candy-mvn/
+  203  ls
+  204  git clone https://github.com/wkulhanek/openshift-tasks.git
+  205  cd openshift-tasks/
+  206  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloude
+  207  git push -u gogs master
+  208  git pull
+  209  ls
+  210  git pull origin master
+  211  ls
+  212  git pull gogs master
+  213  ls
+  214  rm -rf pom.xml
+  215  git rm pom.xml
+  216  ls
+  217  git pull gogs master
+  218  git commit -m "deleted pom.xml"
+  219  cd ..
+  220  cd openshift-tasks/
+  221  cd ..
+  222  rm -rf openshift-tasks/
+  223  git clone https://github.com/wkulhanek/openshift-tasks.git
+  224  cd openshift-tasks
+  225  ls
+  226  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloude
+  227  git push -u gogs master
+  228  git pull gogs master
+  229  cd
+  230  ls
+  231  cd openshift-tasks/
+  232  ls
+  233  cd ..
+  234  rm -rf openshift-tasks
+  235  l
+  236  ls
+  237  git clone https://github.com/wkulhanek/openshift-tasks.git
+  238  cd openshift-tasks
+  239  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloude
+  240  git push -u gogs master
+  241  git remote add gogs http://inder:inder@gogs-cicd-inder.cloudapps.pdcloude
+  242  git remote add cicd http://inder:inder@gogs-cicd-inder.cloudapps.pdcloude
+  243  git push -u cicd master
+  244  vim nexus_settings.xml
+  245  vim nexus_openshift_settings.xml
+  246  git commit -m "Updated Settings" nexus_settings.xml nexus_openshift_setti
+  247  git push -u cicd master
+  248  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  249  yum install maven
+  250  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  251  oc new-project cicd-tasks-dev --display-name "Tasks Development"
+  252  oc policy add-role-to-user edit system:serviceaccount:jenkins:jenkins -n
+  253  oc new-build --binary=true --name="tasks" jboss-eap70-openshift:1.5
+  254  oc new-build --binary=true --name="tasks" jboss-eap70-openshift
+  255  oc new-app cicd-tasks-dev/tasks:TestingCandidate-1.0 --name=tasks --allow
+  256  oc set triggers dc/tasks --manual
+  257  oc expose dc tasks --port 8080
+  258  oc expose svc tasks
+  259  oc new-project cicd-tasks-prod --display-name "Tasks Production"
+  260  oc policy add-role-to-group system:image-puller system:serviceaccounts:ci
+  261  oc policy add-role-to-user edit system:serviceaccount:jenkins:jenkins -n
+  262  oc new-app cicd-tasks-dev/tasks:ProdReady-1.0 --name=tasks-green --allow-
+  263  oc new-app cicd-tasks-dev/tasks:ProdReady-1.0 --name=tasks-blue --allow-m
+  264  oc set triggers dc/tasks-green --manual
+  265  oc set triggers dc/tasks-blue --manual
+  266  oc expose dc tasks-blue --port 8080
+  267  oc expose dc tasks-green --port 8080
+  268  oc expose svc/tasks-green --name tasks
+  269  ls
+  270  vim nexus_openshift_settings.xml
+  271  vim nexus_settings.xml
+  272  cd ..
+  273  oc project
+  274  cd ~
+  275  ls
+  276  oc new-project cicd-nexus --display-name "Shared Nexus"
+  277  oc new-app sonatype/nexus3:latest
+  278  oc expose svc nexus3
+  279  oc rollout pause dc nexus3
+  280  oc patch dc nexus3 --patch='{ "spec": { "strategy": { "type": "Recreate"
+  281  oc set resources dc nexus3 --limits=memory=2Gi --requests=memory=1Gi
+  282  oc rollout resume dc nexus3
+  283  curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/wkulhanek/oc
+  284  chmod +x setup_nexus3.sh
+  285  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template=
+  286  oc projects
+  287  vim nexus_settings.xml
+  288  oc get projects
+  289  oc project cicd-nexus
+  290  ls
+  291  cd openshift-tasks/
+  292  ls
+  293  vim nexus_settings.xml
+  294  vim nexus_openshift_settings.xml
+  295  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  296  git commit -m "Updated Settingss" nexus_settings.xml nexus_openshift_sett
+  297  git push cicd  master
+  298  cd $HOME/openshift-tasks
+  299  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  300  vim nexus_settings.xml
+  301  git commit -m "Updated Settingsss" nexus_settings.xml nexus_openshift_set
+  302  git push cicd  master
+  303  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  304  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template=
+  305  ls
+  306  cd ..
+  307  ls
+  308  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template=
+  309  ls
+  310  cd openshift-tasks/
+  311  ls
+  312  vim nexus_openshift_settings.xml
+  313  cat ~/.ssh/id_rsa.pub
+  314  ls
+  315  cd candy/
+  316  ls
+  317  rm -rf candy
+  318  git clone http://35.200.149.204/openshift-demo/candy.git
+  319  git clone http://ujwal@prodevans.com:acharya7624@35.200.149.204/openshift
+  320  git clone http://ujwal:acharya7624@35.200.149.204/openshift-demo/candy.gi
+  321  ls
+  322  rm -rf candy
+  323  ls
+  324  mkdir candy
+  325  oc project
+  326  whoami
+  327  oc delete limits resource-limits
+  328  oc login
+  329  oc delete limits resource-limits
+  330  oc project candy
+  331  cd ..
+  332  pwd
+  333  oc project can
+  334  ls
+  335  pwd
+  336  cd ..
+  337  ls
+  338  cd ~
+  339  ls
+  340  cd candy/
+  341  ls
+  342  cp -r candy candy1
+  343  ls
+  344  ll
+  345  ls
+  346  pwd
+  347  ls
+  348  cd candy/
+  349  ls
+  350  cd candy/
+  351  ll
+  352  cd ..
+  353  chmod 775 candy/
+  354  chown -R root.devopsuser candy
+  355  ll
+  356  cd candy/
+  357  ll
+  358  cd ..
+  359  chmod -R 775 candy/
+  360  cd candy/
+  361  ls
+  362  cd candy
+  363  ls
+  364  ll
+  365  cd ..
+  366  cd candy1
+  367  ls
+  368  oc login
+  369  oc get limits
+  370  oc describe limits resource-limits
+  371  oc login -u system:admin
+  372  oc get limits
+  373  ls
+  374  cat limit.yaml
+  375  cat suman.yaml
+  376  cp limit.yaml limit1.yaml
+  377  cd candy/
+  378  ls
+  379  cat limits.yml
+  380  oc get limits
+  381  oc describe limits resource-limits
+  382  cat limits1.yml
+  383  ls
+  384  grep cpu *
+  385  ls
+  386  cat limits1.yml
+  387  cat limits.yml
+  388  cp limits.yml limits2.yml
+  389  vi limits2.yml
+  390  oc get limits
+  391  oc delete limits resource-limits
+  392  oc create -f limits2.yml -n can
+  393  oc login
+  394  oc get all
+  395  oc delete all -l app=candy7
+  396  oc get po
+  397  history | grep -i cand
+  398  oc get is
+  399  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --na
+  400  oc get po
+  401  ls
+  402  cat hpa1.yml
+  403  cat hpa.yml
+  404  vi hpa.yml
+  405  oc get pod
+  406  oc create -f hpa.yml
+  407  oc get hpa
+  408  oc get pod
+  409  vi hpa.yml
+  410  oc get dc
+  411  vi hpa.yml
+  412  oc create -f hpa.yml
+  413  oc get hpa
+  414  oc delete hpa candy9
+  415  oc create -f hpa.yml
+  416  oc get hpa
+  417  oc get po
+  418  oc describe pod candy9-1-deploy
+  419  oc logs candy9-1-deploy
+  420  oc get pod
+  421  oc get limits
+  422  oc describe limits resource-limits
+  423  pwd
+  424  ls
+  425  ls -ltr
+  426  cat limits2.yml
+  427  oc get project
+  428  oc project
+  429  ls -ltr
+  430  cat hpa.yml
+  431  oc get pod
+  432   oc delete limits resource-limits
+  433  oc login system:admin
+  434  oc delete limits resource-limits
+  435  whoami
+  436  oc login
+  437  oc delete limits resource-limits
+  438  oc login system:admin
+  439  whoami
+  440  vim limits2.yml
+  441  oc create -f limits2.yml -n can
+  442  oc new-app --docker-image=docker-registry.default.svc:5000/can/candy --na
+  443  vi limits2.yml
+  444  vi hpa.yml
+  445  chown -R root.devopsuser /
+  446  ll
+  447  ll /root/
+  448  su - inder
+  449  ssh node
+  450  oc project cicd-inder
+  451  ls
+  452  su - inder
+  453  vim /etc/origin/master/master-config.yaml
+  454  ssh node
+  455  su - inder
+  456  ls -ld
+  457  chown root.devopsuser /root
+  458  chmod 775 /root
+  459  oc login
+  460  oc new-project siddu-nexus --display-name "Nexus"
+  461  oc new-app sonatype/nexus3:latest
+  462  oc expose svc nexus3
+  463  oc rollout pause dc nexus3
+  464  oc patch dc nexus3 --patch='{ "spec": { "strategy": { "type": "Recreate"
+  465  oc set resources dc nexus3 --limits=memory=2Gi --requests=memory=1Gi
+  466  oc set probe dc/nexus3 --liveness --failure-threshold 3 --initial-delay-s
+  467  oc rollout resume dc nexus3
+  468  curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/wkulhanek/oc
+  469  chmod +x setup_nexus3.sh
+  470  ./setup_nexus3.sh admin admin123 http://$(oc get route nexus3 --template=
+  471  oc new-project siddu-sonarqube --display-name "Sonarqube"
+  472  oc new-app postgresql-persistent --param POSTGRESQL_USER=sonar --param POCITY=4Gi -lapp=sonarqube_db
+  473  oc new-app wkulhanek/sonarqube:6.5 -e SONARQUBE_JDBC_USERNAME=sonar -e SOl/sonar -lapp=sonarqube
+  474  cd $HOME
+  475  git clone https://github.com/wkulhanek/openshift-tasks.git
+  476  mkdir test
+  477  cd test
+  478  git clone https://github.com/wkulhanek/openshift-tasks.git
+  479  cd $HOME/openshift-tasks
+  480  git remote add gogs http://test:123456@gogs-cicd-inder.cloudapps.pdcloude
+  481  git remote add cicd  http://test:123456@gogs-cicd-inder.cloudapps.pdcloud
+  482  git remote add siddu  http://test:123456@gogs-cicd-inder.cloudapps.pdclou
+  483  git push -u siddu master
+  484  ls
+  485  vim nexus_settings.xml
+  486  ls
+  487  vim nexus_openshift_settings.xml
+  488  git commit -m "Updated Settings" nexus_settings.xml nexus_openshift_setti
+  489  git push siddu master
+  490  mvn clean install -DskipTests=true -s ./nexus_settings.xml
+  491  mvn test -s ./nexus_settings.xml
+  492  oc siddu-project xyz-jenkins --display-name "Jenkins"
+  493  oc new-project siddu-jenkins --display-name "Jenkins"
+  494  oc new-app jenkins-persistent --param ENABLE_OAUTH=true --param MEMORY_LI
+  495  cd candy/
+  496  oc projects
+  497  oc new-project siddu-tasks-dev --display-name "Tasks Development"
+  498  pwd
+  499  docker rmi candyimg
+  500  docker images
+  501  docker rmi candyimg
+  502  docker build -t candyimg .
+  503  whoiam
+  504  whoami
+  505  oc projects
+  506  oc new-app --docker-image=candyimg
+  507  oc get pods
+  508  docker images
+  509  oc new-app httpd~https://github.com/anand-prodevans/candy-mvn.git
+  510  oc get pod
+  511  oc project candy1
+  512  oc new-app --docker-image=candyimg
+  513  oc get pods
+  514  docker images
+  515  oc new-app --docker-image=candyimg
+  516  oc new-app --docker-image=candyiimg
+  517  oc get pods
+  518  oc project
+  519  oc new-app --docker-image=candyimg --name=candyiimg
+  520  oc get pods
+  521  oc project2
+  522  oc project project2
+  523  oc get pods
+  524  ls
+  525  cd
+  526  cd candy/
+  527  ll
+  528  docker images
+  529  oc get pods
+  530  history
+  531  oc project
+  532  oc get pods
+  533  oc expose
+  534  oc project project2
+  535  oc get dc
+  536  oc get projects
+  537  oc project octest
+  538  oc get dc
+  539  oc edit candy-mvn
+  540  oc edit dc candy-mvn
+  541  oc get is
+  542  oc get dc
+  543  cd get bc
+  544  oc get bc
+  545  oc describe candy-mvn
+  546  oc edit bc candy-mvn
+  547  history
+  548  docker login -p mrs-Lqw2ap8bMAHqFrJPOUaBVeRagVxb7fEQKGqyKDI -e unused -u
+  549  history | grep docker
+  550  docker login docker-registry-default.cloudapps.pdcloudex.com
+  551  oc whoami -t
+  552  docker login docker-registry-default.cloudapps.pdcloudex.com
+  553  docker login docker-registry-default.cloudapps.pdcloudex.com
+  554  docker login --user=anand --password=gD28xezzizHrzObWi7E0Am2tHyq6OMBegpP5
+  555  docker login --help
+  556  docker login -u=anand -p=gD28xezzizHrzObWi7E0Am2tHyq6OMBegpP5fBDgC1s  doc
+  557   docker images
+  558   docker tag candy3 docker-registry.default.svc:5000/octest/candyimg
+  559   docker push docker-registry.default.svc:5000//octest/candyimg
+  560   docker push docker-registry.default.svc:5000/octest/candyimg
+  561  docker login -u=anand -p=gD28xezzizHrzObWi7E0Am2tHyq6OMBegpP5fBDgC1s  doc
+  562   docker tag candy3 docker-registry.default.svc:5000/octest/candyimg
+  563   docker push docker-registry.default.svc:5000/octest/candyimg
+  564  whoami
+  565  whoami
+  566  docker login docker-registry-default.cloudapps.pdcloudex.com
+  567  whoami
+  568  oc whoami
+  569  oc whoami -t
+  570   docker tag candy3 docker-registry.default.svc:5000/octest/candy
+  571  oc whoami
+  572  docker login -p mrs-Lqw2ap8bMAHqFrJPOUaBVeRagVxb7fEQKGqyKDI -e unused -u
+  573  docker login docker-registry-default.cloudapps.pdcloudex.com
+  574  oc login
+  575  oc whoami -t
+  576  docker login -u=inder -p=wWR0nn-rp88Dwym0W724K4skjxKR0nDYJjm8UJyE7Bc  doc
+  577   docker tag candyimg docker-registry.default.svc:5000/octest/candy
+  578   docker push docker-registry.default.svc:5000/octest/candy
+  579  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk -e unused -u
+  580   docker push docker-registry.default.svc:5000/octest/candy
+  581  oc login --token yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk console.pdcl
+  582   docker push docker-registry.default.svc:5000/octest/candy
+  583  clear
+  584  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk -e unused -u
+  585  docker tag candyimg docker-registry-default.cloudapps.pdcloudex.com/octes
+  586  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+  587  oc get pods -o wide
+  588  oc delete pod candyimg-1-deploy
+  589  oc get pods
+  590  oc get al
+  591  oc get all
+  592  oc get pods -o wide
+  593  oc get all
+  594  oc project
+  595  oc get all
+  596  oc project
+  597  oc delete project octest
+  598  oc get all
+  599  oc get project
+  600  oc new-project octest
+  601  oc get is --all-namespaces
+  602  oc get is --all-namespaces  |grep -i img
+  603  oc get is --all-namespaces  |grep -i candy
+  604  su - inder
+  605  oc get all
+  606  oc new-app --docker-image=docker-registry.default.svc:5000/octest/candyim
+  607  oc get all
+  608  oc describe po/candyimg-1-deploy
+  609  oc get pods
+  610  oc describe pod candyimg-1-9xhq9
+  611  oc logs candyimg-1-9xhq9
+  612  ssh node
+  613  oc get all
+  614  oc logs po/candyimg-1-9xhq9
+  615  oc edit dc/candyimg
+  616  oc get pods -o wide
+  617  oc delete pod candyimg-1-9xhq9
+  618  oc get all
+  619  oc delete po/candyimg-2-c3njp
+  620  oc get all
+  621  oc logs po/candyimg-2-xjznr
+  622  ls
+  623  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk -e unused -u
+  624  docker tag candy_updated docker-registry-default.cloudapps.pdcloudex.com/
+  625  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+  626  docker tag candy_updated docker-registry-default.cloudapps.pdcloudex.com/
+  627  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candy_
+  628  oc new-app --docker-image=docker-registry.default.svc:5000/octest/candy_u
+  629  oc get pods
+  630  oc get pods -o wide
+  631  oc logs candyupdated-1-89gl8
+  632  cd candy
+  633  ls
+  634  clear
+  635  docker images
+  636  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com
+  637  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com
+  638  clear
+  639  docker images
+  640  oc new-app --docker-image=docker-registry.default.svc:5000/candy1/candy
+  641  clear
+  642  docker build -t app .
+  643  cd ..
+  644  docker build -t app .
+  645  oc new-app --docker-image=b9a49c450a28
+  646  oc new-app --docker-image=b9a49c450a28 app
+  647  oc new-app --docker-image=app
+  648  oc status
+  649  oc get pods -o wide
+  650  oc describe pod app-1-k01xh
+  651  docker images
+  652  docker tag app docker-registry-default.cloudapps.pdcloudex.com/octest/app
+  653  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/app
+  654  docker images
+  655  oc new-app --docker-image= docker-registry-default.cloudapps.pdcloudex.co
+  656  oc get all
+  657  oc delete is/app is/candy is/candy_updated is/candyupdated is/candyupdate
+  658  oc delete rc/app-1 rc/candyimg-1 rc/candyimg-2 rc/candyupdated-1 dc/app d
+  659  oc get all
+  660  oc delete svc/app svc/candyimg svc/candyupdated
+  661  oc get all
+  662  oc new-app --docker-image=docker-registry-default.cloudapps.pdcloudex.com
+  663  oc get all
+  664  oc describe po/app-1-dwcz5
+  665  ssh node
+  666  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  667  docker images |grep -i app
+  668  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  669  oc whoami -t
+  670  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u
+  671  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  672  docker tag docker-registry-default.cloudapps.pdcloudex.com/octest/app:lat
+  673  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  674  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  675  ssh node
+  676  oc get pods
+  677  oc delete pod  app-1-dwcz5
+  678  oc get pods
+  679  oc delete pod app-1-5bk4h
+  680  oc get all
+  681  oc edit dc/app
+  682  oc edit is/app
+  683  oc get all
+  684  oc delete is/app
+  685  oc get all
+  686  oc delete  po/app-1-nj1r1
+  687  oc get all
+  688  oc describe po/app-1-jr28g
+  689  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  690  docker tag docker-registry-default.cloudapps.pdcloudex.com/octest/app:lat
+  691  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  692  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/app:la
+  693  oc get all
+  694  oc delete po/app-1-jr28g
+  695  oc get all
+  696  oc po/app-1-mh06z
+  697  oc get all
+  698  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u
+  699  docker pull  docker-registry.default.svc:5000/octest/app
+  700  ssh node
+  701  oc get pods
+  702  oc get dc
+  703  oc deploy dc/app --retry=1
+  704  oc get pods -o wide
+  705  oc describe pod app-1-rh55z
+  706  oc get is
+  707  oc get all
+  708  oc edit dc app
+  709  oc get all
+  710  oc delete po/app-1-rh55z
+  711  oc get all
+  712  oc describe po/app-2-2k2br
+  713  oc get pods
+  714  oc logs app-2-2k2br
+  715  su - inder
+  716  oc project
+  717  oc whoami
+  718  oadm policy add-scc-to-user anyuid -z default
+  719  oc get pods
+  720  oc delete pod  app-2-2k2br
+  721  oc delete pod  app-2-2k2br
+  722  oc get pods
+  723  history
+  724  oc project
+  725  oc get all
+  726  oc delete is/app dc/app rc/app-1 rc/app-2 svc/app po/app-2-st05t
+  727  docker images
+  728  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candyim
+  729  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candyim
+  730  docker images
+  731  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/app
+  732  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candy
+  733  docker rmi docker-registry-default.cloudapps.pdcloudex.com/octest/candy_u
+  734  docker rmi docker-registry.default.svc:5000/octest/app
+  735  docker images
+  736  docker -h
+  737  docker images
+  738  docker rmi f882dbee3716 6018a81d4853 6b421fe33e03 8ea17dbbf894 cf1fdc9bb4
+  739  docker images
+  740  docker rmi 65a2b67a9406
+  741  docker images
+  742  docker rmi fe1b8858d6f6 985a53804e60
+  743  docker images
+  744  oc project
+  745  docker images
+  746  oc get pods -o wide
+  747  oc describe candymonster-1-j83t6
+  748  oc describe pod candymonster-1-j83t6
+  749  oc get all
+  750  oc edit dc/candymonster
+  751  oc get pods
+  752  oc delete pod candymonster-1-j83t6
+  753  oc get all
+  754  docker images
+  755  oc delete pod is/candymonster dc/candymonster rc/candymonster-1 rc/candym
+  756  oc delete pod is/candymonster dc/candymonster rc/candymonster-1 rc/candym
+  757  oc get all
+  758  oc delete is/candymonster dc/candymonster rc/candymonster-1 rc/candymonst
+  759  oc get all
+  760  docker images
+  761  docker pull docker-registr.default.svc:5000/octest/candymonster
+  762  docker pull docker-registry.default.svc:5000/octest/candymonster
+  763  docker pull docker-registry-default.cloudapps.pdcloudex.com/octest/candym
+  764  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u
+  765  docker images
+  766  docker login -p yleOhaUZRjP4t_PrzIAJWvxSz_jE6iPoShEf5Uy6MKk  -e unused -u
+  767  docker push docker-registry-default.cloudapps.pdcloudex.com/octest/candym
+  768  docker images
+  769  docker rmi rm docker-registr.default.svc:5000/octest/candymonster
+  770  docker rmi docker-registr.default.svc:5000/octest/candymonster
+  771  docker images
+  772  oc get all
+  773  oc get pods -o wide
+  774  oc get all
+  775  oc expose svc/candymonster --hostname=mosterapp.cloudapps.pdcloudex.com
+  776  oc get all
+  777  more /etc/ansible/hosts
+  778  oc login -u inder -p inder
+  779  oc get project
+  780  oc project demoredhatpre
+  781  oc get all
+  782  oc describe po/candymonster-1-0wwks
+  783  oc get all
+  784  oc edit dc/candymonster
+  785  ssh node
+  786  oc get pods -o wide
+  787  oc get all
+  788  oc project
+  789  oc edit dc/candymonster
+  790  oc project
+  791  oc delete project demoredhatpre
+  792  oc project
+  793  oc get projects
+  794  oc get project
+  795  oc project demoredhatpre
+  796  oc get all
+  797  oc expose svc/candymonster
+  798  oc get all
+  799  oc edit dc/candymonster
+  800  oc get all
+  801  oc build
+  802  oc start-build
+  803  oc project project2
+  804  oc get all
+  805  oc new-build bc/mvn-updated
+  806  oc get bc
+  807  oc build
+  808  oc start-build bc/mvn-updated
+  809  oc get all
+  810  oc get is -n openshift  |grep -i httpd
+  811  oc new-project inderdemo
+  812  oc new-app --name=inderapp -i httpd:2.4 https://github.com/anand-prodevan
+  813  oc get all
+  814  oc logs -f bc/inderapp
+  815  oc get all
+  816  oc expose
+  817  oc expose svc/inderapp
+  818  oc expose
+  819  oc get all
+  820  history
+  821  ls
+  822  cd candy/
+  823  ls
+  824  oc get pods
+  825  oc get app
+  826  oc get pods
+  827  su - jenkins
+  828  oc get pods
+  829  oc get pods | grep monstercandy-1-build
+  830  oc get pods | grep monstercandy
+  831  which oc
+  832  su - devaopsuser
+  833  su - devopsuser
+  834  oc get users
+  835  cd /etc/origin/master/
+  836  ls
+  837  cat passwd
+  838  htpasswd -b /etc/origin/master/passwd siddu siddu
+  839  oc get pods |grep -i monstercandy
+  840  oc get nodes
+  841  oc describe node node
+  842  su - inder
+  843  ls
+  844  exit
+  845  ls
+  846  oc get project
+  847  oc project march8
+  848  ls
+  849  oc create -f hpacpu.yaml
+  850  oc create -f limit.yaml
+  851  oc get hpa
+  852  history |grep curl
+  853  exit
+  854  oc get pods
+  855  oc get hpa
+  856  ls
+  857  cat hpacpu.yaml
+  858  ls
+  859  cat limit.yaml
+  860  ls
+  861  ls -l
+  862  more hpa.yaml
+  863  oc project project2
+  864  oc get hpa
+  865  oc export hpa mvn-updated > mvn-updated.yaml
+  866  vim mvn-updated.yaml
+  867  oc get project
+  868  oc project march8
+  869  ls
+  870  cat mvn-updated.yaml
+  871  oc create -f mvn-updated.yaml
+  872  ls
+  873  cat hpa.yaml
+  874  vim hpa.yaml
+  875  vim hpacpu.yaml
+  876  oc get dc
+  877  oc get project
+  878  oc delete project march8
+  879  oc get all
+  880  oc get project
+  881  oc get pods
+  882  oc get project
+  883  oc project march8
+  884  ls
+  885  cat hpa.yaml
+  886  vim hpacpu.yaml
+  887  oc project
+  888  oc project march8
+  889  oc create -f hpacpu.yaml
+  890  oc get hpa
+  891  ls
+  892  cat limit.yaml
+  893  oc create -f limit.yaml
+  894  oc get limitrange
+  895  oc get hpa
+  896  oc get limitrange
+  897  oc get hpa
+  898  oc get all
+  899  oc get hpa
+  900  curl -kvI monstercandy-march8.cloudapps.pdcloudex.com
+  901  oc get hpa
+  902  oc get limitrange
+  903  oc edit limitrange core-resource-limits
+  904  oc get hpa
+  905  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  906  oc get hpa
+  907  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  908  ls
+  909  oc projects
+  910  ls
+  911  oc project march8
+  912  oc  create -f hpacpu.yaml
+  913  oc create -f limit.yaml
+  914  oc get pods
+  915  oc get hpa
+  916  oc get limitrange
+  917  oc get hpa
+  918  oc describe hpa
+  919  oc get hpa
+  920  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  921  oc get pods
+  922  oc get hpa
+  923  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  924  ps -ef |grep -i curl
+  925  ps -ef |grep -i cur
+  926  ps -ef |grep -i for
+  927  oc get project
+  928  su - inder
+  929  oc get all
+  930  for i in {1..50000000}; do curl monstercandy-march8.cloudapps.pdcloudex.c
+  931  for i in {1..50000000}; do curl -kvI monstercandy-march8.cloudapps.pdclou
+  932  oc get pods
+  933  oc get hpa
+  934  oc get pods
+  935  history
+  936  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  937  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  938  oc project cicd-inder
+  939  oc get pods -o wide
+  940  oc get dc
+  941  oc edit dc jenkins
+  942  oc get clusterrole
+  943  oc get clusterrole |grep -i self
+  944  oc adm policy remove-cluster-role-from-group self-provisioner system:auth
+  945  oadm policy add-role-to-user admin siddu -n march8
+  946  oadm policy add-role-to-user admin siddu -n cicd-inder
+  947  oadm policy remove-role-from-user admin siddu -n cicd-inder
+  948  oc project project2
+  949  oc get hpa
+  950  oc export hpa mvn-updated > mvn-updated.yam
+  951  oc export hpa mvn-updated > mvn-updated.yaml
+  952  vim mvn-updated.yaml
+  953  ox get limit
+  954  oc get limitrange
+  955  oc get limits
+  956  oc get resourcequota
+  957  oc get quota
+  958  oc get all
+  959  oc get limitrange
+  960  oc project
+  961  oc get quota
+  962  oc get resource
+  963  oc get horizontalpodautoscaler
+  964  oadm new-project which oadm
+  965  which oadm
+  966  which oc
+  967  oc get dc
+  968  oc get hpa
+  969  oc get project
+  970  oc delete project march8
+  971  oc get project
+  972  ls
+  973  pwd
+  974  ls
+  975  pwd
+  976  chmod 777 hpacpu.yaml
+  977  chmod 777 limit.yaml
+  978  oc get project
+  979  oc delete project march8
+  980  oc get project
+  981  ls
+  982  vim limit.yaml
+  983  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  984  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  985  for i in {1..100000}; do curl -kvI monstercandy-march8.cloudapps.pdcloude
+  986  oc get pods -oo wide
+  987  vim limit.yaml
+  988  catlimit.yaml
+  989  cat limit.yaml
+  990  history
+
+==========================================================
+     vim /etc/origin/master/master-config.yaml
+==========================================================
+
+admissionConfig:
+  pluginConfig:
+    BuildDefaults:
+      configuration:
+        apiVersion: v1
+        env: []
+        kind: BuildDefaultsConfig
+        resources:
+          limits: {}
+          requests: {}
+    BuildOverrides:
+      configuration:
+        apiVersion: v1
+        kind: BuildOverridesConfig
+    openshift.io/ImagePolicy:
+      configuration:
+        apiVersion: v1
+        executionRules:
+        - matchImageAnnotations:
+          - key: images.openshift.io/deny-execution
+            value: 'true'
+          name: execution-denied
+          onResources:
+          - resource: pods
+          - resource: builds
+          reject: true
+          skipOnResolutionFailure: true
+        kind: ImagePolicyConfig
+apiLevels:
+- v1
+apiVersion: v1
+assetConfig:
+  logoutURL: ""
+  masterPublicURL: https://console.pdcloudex.com:8443
+  metricsPublicURL: https://hawkular-metrics-openshift-infra.cloudapps.pdcloudex.com/hawkular/metrics
+  publicURL: https://console.pdcloudex.com:8443/console/
+  servingInfo:
+    bindAddress: 0.0.0.0:8443
+    bindNetwork: tcp4
+    certFile: master.server.crt
+    clientCA: ""
+    keyFile: master.server.key
+    maxRequestsInFlight: 0
+    requestTimeoutSeconds: 0
+auditConfig:
+  auditFilePath: /var/log/openpaas-oscp-audit/openpaas-oscp-audit.log
+  enabled: true
+  maximumFileRetentionDays: 14
+  maximumFileSizeMegabytes: 500
+  maximumRetainedFiles: 5
+controllerConfig:
+  serviceServingCert:
+    signer:
+      certFile: service-signer.crt
+      keyFile: service-signer.key
+controllers: '*'
+corsAllowedOrigins:
+- 127.0.0.1
+- localhost
+- 10.0.0.4
+- 52.172.28.149
+- openshift.default.svc
+- kubernetes.default
+- kubernetes.default.svc.cluster.local
+- kubernetes
+- openshift.default
+- master.yc11uvygtvqulpcrab0kddwy1h.tx.internal.cloudapp.net
+- console.pdcloudex.com
+- master
+- openshift.default.svc.cluster.local
+- 10.129.0.1
+- kubernetes.default.svc
+- openshift
+dnsConfig:
+  bindAddress: 0.0.0.0:8053
+  bindNetwork: tcp4
+etcdClientInfo:
+  ca: master.etcd-ca.crt
+  certFile: master.etcd-client.crt
+  keyFile: master.etcd-client.key
+  urls:
+  - https://master:2379
+etcdStorageConfig:
+  kubernetesStoragePrefix: kubernetes.io
+  kubernetesStorageVersion: v1
+  openShiftStoragePrefix: openshift.io
+  openShiftStorageVersion: v1
+imageConfig:
+  format: openshift3/ose-${component}:${version}
+  latest: false
+kind: MasterConfig
+kubeletClientInfo:
+  ca: ca-bundle.crt
+  certFile: master.kubelet-client.crt
+  keyFile: master.kubelet-client.key
+  port: 10250
+kubernetesMasterConfig:
+  apiServerArguments:
+    storage-backend:
+    - etcd3
+    storage-media-type:
+    - application/vnd.kubernetes.protobuf
+    runtime-config:
+    - apis/autoscaling/v2alpha1=true
+  controllerArguments:
+  masterCount: 1
+  masterIP: 10.0.0.4
+  podEvictionTimeout:
+  proxyClientInfo:
+    certFile: master.proxy-client.crt
+    keyFile: master.proxy-client.key
+  schedulerArguments:
+  schedulerConfigFile: /etc/origin/master/scheduler.json
+  servicesNodePortRange: ""
+  servicesSubnet: 10.129.0.0/20
+  staticNodeNames: []
+masterClients:
+  externalKubernetesClientConnectionOverrides:
+    acceptContentTypes: application/vnd.kubernetes.protobuf,application/json
+    burst: 400
+    contentType: application/vnd.kubernetes.protobuf
+    qps: 200
+  externalKubernetesKubeConfig: ""
+  openshiftLoopbackClientConnectionOverrides:
+    acceptContentTypes: application/vnd.kubernetes.protobuf,application/json
+    burst: 600
+    contentType: application/vnd.kubernetes.protobuf
+    qps: 300
+  openshiftLoopbackKubeConfig: openshift-master.kubeconfig
+masterPublicURL: https://console.pdcloudex.com:8443
+networkConfig:
+  clusterNetworkCIDR: 10.128.0.0/20
+  externalIPNetworkCIDRs:
+  - 0.0.0.0/0
+  hostSubnetLength: 9
+  networkPluginName: redhat/openshift-ovs-multitenant
+  serviceNetworkCIDR: 10.129.0.0/20
+oauthConfig:
+  assetPublicURL: https://console.pdcloudex.com:8443/console/
+  grantConfig:
+    method: auto
+  identityProviders:
+  - challenge: true
+    login: true
+    mappingMethod: claim
+    name: my_htpasswd_provider
+    provider:
+      apiVersion: v1
+      file: /etc/origin/master/passwd
+      kind: HTPasswdPasswordIdentityProvider
+  masterCA: ca-bundle.crt
+  masterPublicURL: https://console.pdcloudex.com:8443
+  masterURL: https://console.pdcloudex.com:8443
+  sessionConfig:
+    sessionMaxAgeSeconds: 600
+    sessionName: ssn
+    sessionSecretsFile: /etc/origin/master/session-secrets.yaml
+  tokenConfig:
+    accessTokenMaxAgeSeconds: 86400
+    authorizeTokenMaxAgeSeconds: 500
+pauseControllers: false
+policyConfig:
+  bootstrapPolicyFile: /etc/origin/master/policy.json
+  openshiftInfrastructureNamespace: openshift-infra
+  openshiftSharedResourcesNamespace: openshift
+projectConfig:
+  defaultNodeSelector: region=primary
+  projectRequestMessage: ""
+  projectRequestTemplate: ""
+  securityAllocator:
+    mcsAllocatorRange: s0:/2
+    mcsLabelsPerProject: 5
+    uidAllocatorRange: 1000000000-1999999999/10000
+routingConfig:
+  subdomain: cloudapps.pdcloudex.com
+serviceAccountConfig:
+  limitSecretReferences: false
+  managedNames:
+  - default
+  - builder
+  - deployer
+  masterCA: ca-bundle.crt
+  privateKeyFile: serviceaccounts.private.key
+  publicKeyFiles:
+  - serviceaccounts.public.key
+servingInfo:
+  bindAddress: 0.0.0.0:8443
+  bindNetwork: tcp4
+  certFile: master.server.crt
+  clientCA: ca-bundle.crt
+  keyFile: master.server.key
+  maxRequestsInFlight: 500
+  requestTimeoutSeconds: 3600
+volumeConfig:
+  dynamicProvisioningEnabled: true
+===============================================================
+ cat hpacpu.yaml
+===============================================================
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: monstercandy
+  namespace: demo
+  resourceVersion: "4053769"
+spec:
+  maxReplicas: 20
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: v1
+    kind: DeploymentConfig
+    name: monstercandy
+  targetCPUUtilizationPercentage: 4
+status:
+  currentCPUUtilizationPercentage: 0
+  currentReplicas: 1
+  desiredReplicas: 5
+
+============================================================
+ cat limit.yaml
+============================================================
+apiVersion: "v1"
+kind: "LimitRange"
+metadata:
+  name: "core-resource-limits"
+spec:
+  limits:
+    - type: "Pod"
+      max:
+        cpu: "2"
+        memory: "1Gi"
+      min:
+        cpu: "100m"
+        memory: "6Mi"
+    - type: "Container"
+      max:
+        cpu: "2"
+        memory: "1Gi"
+      min:
+        cpu: "100m"
+        memory: "4Mi"
+      default:
+        cpu: "100m"
+        memory: "100Mi"
+      defaultRequest:
+        cpu: "100m"
+        memory: "100Mi"
+      maxLimitRequestRatio:
+        cpu: "10"
+
+
